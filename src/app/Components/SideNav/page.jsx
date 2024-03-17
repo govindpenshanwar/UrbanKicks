@@ -38,16 +38,16 @@ function SideNav({ onSearch, onSortByChange }) {
     };
 
     return (
-        <div className=" w-44 mx-24 mt-16">
-            <h3 className="mb-3 text-2xl font-semibold">Search</h3>
+        <div className="w-auto px-5 sm:px-0 sm:w-44 space-x-2 sm:space-x-0  sm:mx-24  mt-16  ">
+            <h3 className="mb-3 text-2xl  font-semibold">Search</h3>
             <input
                 type="text"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={handleSearch}
-                className="w-full py-1 px-2 mb-2 text-stone-800 rounded-md border"
+                className="w-auto sm:w-full py-1 px-2 mb-2 text-stone-800 rounded-md border"
             />
-            <div className="divider w-full  mb-5 bg-opacity-100 bg-slate-700 h-px"></div>
+            <div className="divider w-full sm:w-full  mb-5 bg-opacity-100 bg-slate-700 h-px"></div>
             <h2 className="text-2xl font-semibold mt-3">Filter</h2>
             <div className="divider w-full mt-5 mb-5 bg-opacity-100 bg-slate-700 h-px"></div>
 

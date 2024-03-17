@@ -21,7 +21,6 @@ function Navbar() {
   const open = Boolean(anchorEl);
 
   const { data: session } = useSession();
-  console.log("nav session :", session);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -58,11 +57,13 @@ function Navbar() {
       <div className="flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-48">
         {/* Logo */}
         <Link href="/">
-          <Image src={Logo2} width={130} height={50} alt="logo" />
+          <Image src={Logo2} width={130} height={50} alt="logo"
+            className="flex lg:flex-wrap"
+          />
         </Link>
 
         {/* Navigation Links */}
-        <ul className="flex flex-wrap text-sm gap-8  md:flex md:gap-12 font-bold font-mono md:text-xl">
+        <ul className="flex flex-wrap flex-row text-base gap-4 text-center  md:flex md:gap-12 font-bold font-mono md:text-xl">
           <li><Link href="/Men">Men</Link></li>
           <li><Link href="/Women">Women</Link></li>
           <li><Link href="/Kids">Kids</Link></li>

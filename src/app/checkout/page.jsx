@@ -79,10 +79,6 @@ function CheckoutPage() {
                 const quantity = itemQuantities[item.id] || 1;
                 const itemTotal = itemPrice * quantity;
 
-                // console.log(
-                //     `Item: ${item.name}, Quantity: ${quantity}, Item Price: ${itemPrice}, Item Total: ${itemTotal}`
-                // );
-
                 return total + itemTotal;
             }, 0)
             .toFixed(2);
@@ -96,8 +92,8 @@ function CheckoutPage() {
         < >
             <Navbar />
 
-            <div className=" flex justify-between">
-                <div className="w-max flex flex-col ml-36 mt-9  px-6 gap-6 mb-4 ">
+            <div className=" flex justify-between  ">
+                <div className="w-full sm:w-auto flex flex-col sm:ml-36 mt-9  px-6 gap-6 mb-4 ">
                     <h1 className='text-5xl font-bold mb-10'>Your Details</h1>
 
                     <div className="flex flex-col">
@@ -180,11 +176,11 @@ function CheckoutPage() {
                 </div>
 
                 {/*Second Div Starts Here  */}
-                <div className="justify-end w-3/6 float-right px-16 ">
+                <div className="justify-end w-full md:w-3/6 float-right sm:px-16 px-6">
                     <div className="flex flex-col mt-10 space-y-8">
                         {data &&
                             data.map((item) => (
-                                <ul className="flex justify-around" key={item.id}>
+                                <ul className="flex flex-col lg:flex-row justify-around" key={item.id}>
                                     <Image
                                         src={item.picture}
                                         alt="Shoe Image"
@@ -221,14 +217,14 @@ function CheckoutPage() {
                     </div>
                     <div className="flex-1"></div>
 
-                    <div className="px-4 py-2 sm:px-6">
-                        <div className="mb-2 flex w-full flex-col items-start justify-between sm:mb-0 sm:flex-row sm:items-center">
+                    <div className="px-2 py-2 sm:px-6 ">
+                        <div className="mb-2 flex flex-wrap w-full flex-col items-start  justify-between sm:mb-0 sm:flex-row sm:items-center">
                             <h3 className="text-xl font-semibold ml-4">
                                 Total:₹{calculateTotalPrice()}
                                 {/* {Array.isArray(selectedItems) ? calculateTotal(selectedItems) : 0} */}
                             </h3>
                             <h4>
-                                <svg
+                                {/* <svg
                                     stroke="currentColor"
                                     fill="currentColor"
                                     strokeWidth="0"
@@ -237,7 +233,7 @@ function CheckoutPage() {
                                     height="1em"
                                     width="1em"
                                     xmlns="http://www.w3.org/2000/svg"
-                                ></svg>
+                                ></svg> */}
                                 Free shipping
                             </h4>
                         </div>
@@ -260,7 +256,8 @@ function CheckoutPage() {
                         query: { total: calculateTotalPrice() }
                     }}>
                         <button
-                            className="btn ml-32 block font-bold text-lg w-4/6 justify-center items-center text-center mt-4 "
+                            // className="btn ml-32 block font-bold text-lg w-4/6 justify-center items-center text-center mt-4 "
+                            className="btn ml-auto mr-auto block font-bold text-lg md:w-4/6 w-full justify-center items-center text-center mt-4"
                         >Pay
                         </button>
                     </Link>

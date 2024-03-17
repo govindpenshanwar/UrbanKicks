@@ -25,7 +25,7 @@ function CollectionList() {
 
     return (
         <>
-            <div className='py-28 px-20'>
+            <div className='py-28 px-20 '>
                 <div className='flex w-full flex-col ml-32 md:px-16 lg:px-0  '>
                     <div className='flex h-96 gap-6'>
                         <Image

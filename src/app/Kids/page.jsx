@@ -48,9 +48,12 @@ function KidsPage() {
   return (
     <div>
       <Navbar />
-      <div className='flex'>
+      <div className='sm:flex flex sm:gap-0  gap-5 '>
         <SideNav onSearch={handleSearch} onSortByChange={handleSortByChange} />
-        <div className='relative grid grid-cols-3 justify-center gap-14 2xl:grid-cols-[repeat(auto-fit,24rem mb-10'>
+        <div
+          // className='relative grid grid-cols-3 justify-center gap-14 2xl:grid-cols-[repeat(auto-fit,24rem mb-10'
+          className="relative grid  md:grid-cols-2 lg:grid-cols-3 pr-4 md:pr-0 lg:pr-0  justify-center gap-14"
+        >
           {filteredShoes.map((shoe) => (
             <Link key={shoe.id} href={{
               pathname: '/SingleProduct', query:
