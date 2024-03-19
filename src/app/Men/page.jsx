@@ -5,11 +5,11 @@ import SideNav from "../Components/SideNav/page";
 import Image from "next/image";
 import Drawer from "../Components/Drawer/page";
 import MenShoes from "@/helpers/MenShoes";
-// import axios from 'axios'
-// import { Button } from '@mui/material'
-// import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Link from "next/link";
 import Footer from "../Footer/page";
+
+
+
 
 function MensPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,6 +43,7 @@ function MensPage() {
   const handleSortByChange = (value) => {
     setSortingCriteria(value);
   };
+
   return (
     <div>
       <Navbar />
@@ -81,13 +82,6 @@ function MensPage() {
                   </div>
                   <div className="text-right">
                     <h4 className="-mb-1 text-lg">{shoe.price}</h4>
-                    {/* <Button
-                  endIcon={<KeyboardArrowRightIcon/>}
-                  variant='contained'
-                  // onClick={()=> handleBuyNow(shoe)}
-                  size='medium'
-                  style={{backgroundColor:'#d32f2f', marginTop:'10px', }}
-                  >Buy Now</Button> */}
                   </div>
                 </div>
               </div>

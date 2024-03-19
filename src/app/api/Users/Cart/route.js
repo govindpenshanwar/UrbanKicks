@@ -1,21 +1,5 @@
-// import { NextRequest, NextResponse } from "next/server";
-// import { DbConnect } from "@/DBConfig/Config";
-// import CartData from "@/models/cartModel";
-// export async function POST(req = NextRequest) {
-//     try {
-//         const reqBody = await req.json();
-//         const {id, name, picture, tag, price} = reqBody;
-//         const selectedItems = new CartData ({ id, name, picture, tag, price });
-//         await selectedItems.save();
-//         console.log(selectedItems);
-//         return NextResponse.json({ success: true, selectedItems });
-//     } catch (error) {
-//         console.error("Error at Cart Endpoint :", error);
-//     }
-// }
 
-//!First Code  DbConnect();
-    
+
 import { NextRequest, NextResponse } from "next/server";
 import { DbConnect } from "@/DBConfig/Config";
 import CartData from "@/models/cartModel";
@@ -24,7 +8,7 @@ import CartData from "@/models/cartModel";
 export async function POST(req = NextRequest) {
   try {
     const reqBody = await req.json();
-    const [ id, name, picture, tag, price ] = reqBody;
+    const [id, name, picture, tag, price] = reqBody;
 
     // Assuming reqBody is an array of items
     const selectedItems = reqBody.map((item) => ({
@@ -50,20 +34,6 @@ export async function POST(req = NextRequest) {
   }
 }
 
-
-
-// export async function GET(){
-// try {
-//   const cartItems = await CartData.find();
-//    return NextResponse.json({
-//     message : "Data Fetched",
-//      cartItems
-//    })
-  
-// } catch (error) {
-//   console.error("Error at get EndRoue : ", error);
-// }
-// }
 
 DbConnect();
 

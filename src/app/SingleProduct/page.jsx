@@ -14,6 +14,7 @@ import toast from 'react-hot-toast';
 import Footer from '../Footer/page';
 
 
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -73,6 +74,7 @@ function SinglePage({ searchParams }) {
     useEffect(() => {
         console.log("Selected Items in Drawer:", selectedItems);
     }, [selectedItems]);
+
 
 
     return (
