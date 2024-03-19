@@ -10,7 +10,7 @@ import { Avatar } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import toast from "react-hot-toast";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn, } from "next-auth/react";
 import google from '@public/Images/google.png';
 import Image from "next/image";
 
@@ -27,7 +27,7 @@ function Login() {
   const onLogin = async () => {
     try {
       if (user.username === "" || user.password === "") {
-        alert("Please enter login credentials");
+        toast.error("Please enter login credentials");
       } else {
         const API = await axios.post("/api/Users/Login", user);
         const response = API.data;
@@ -54,7 +54,7 @@ function Login() {
       </span>
 
 
-      <div className=" flex flex-col gap-6  w-96 mt-10 justify-center ">
+      <div className=" flex flex-col gap-6 w-60 sm:w-96 mt-10 justify-center  ">
         <TextField
           value={user.username}
           onChange={(e) => setUser({ ...user, username: e.target.value })}
@@ -82,15 +82,15 @@ function Login() {
           }}
         />
         <button
-          className="btn ml-28 w-40 text-xl font-bold hover:scale-105 transition-all"
+          className="btn sm:ml-28 sm:w-40 w-36 ml-12 text-xl font-bold hover:scale-105 transition-all"
           onClick={onLogin}
         >
           Continue
         </button>
-        <p className="text-base text-zinc-800 ml-24">Don`t have an account?</p>
+        <p className="text-base text-zinc-800 ml-8 sm:ml-24">Don`t have an account?</p>
         <Link href={"signUp"}>
           {" "}
-          <button className="text-xl font-bold text-zinc-700 ml-40 ">
+          <button className="text-xl font-bold text-zinc-700 ml-20 sm:ml-40 ">
             SignUp
           </button>{" "}
         </Link>
@@ -108,7 +108,7 @@ function Login() {
               height={30}
             />
             Sign in with Google</button>
-          <button onClick={() => signOut()}>Sign Out</button>
+          {/* <button onClick={() => signOut()}>Sign Out</button> */}
         </div>
 
       </div>

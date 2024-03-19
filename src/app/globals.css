@@ -2,27 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* background-color: #f8f7f6; */
 }
-.btn{
+
+.btn {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0/var(--tw-bg-opacity));
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
   padding: 0.75rem 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255/var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
   transition-property: all;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
 }
-.divider{
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-    height: 1px;
-    width: 100%;
-    --tw-bg-opacity: 1;
-    background-color: rgb(228 228 231/var(--tw-bg-opacity));
+.divider {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  height: 1px;
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(228 228 231 / var(--tw-bg-opacity));
 }

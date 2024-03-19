@@ -54,16 +54,22 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-48">
+      <nav
+        className="flex flex-row ml-20 font-mono  sm:ml-0 sm:flex sm:w-full  gap-5 sm:items-center sm:justify-between px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-48  "
+      // className="flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-48"
+      >
         {/* Logo */}
         <Link href="/">
           <Image src={Logo2} width={130} height={50} alt="logo"
-            className="flex lg:flex-wrap"
+            className="flex sm:w-40 w-20 sm:flex-wrap"
           />
         </Link>
 
         {/* Navigation Links */}
-        <ul className="flex flex-wrap flex-row text-base gap-4 text-center  md:flex md:gap-12 font-bold font-mono md:text-xl">
+        <ul
+          className="flex items-center space-x-8 sm:space-x-12 sm:text-xl font-bold sm:font-bold sm:font-mono"
+        //  className="flex flex-wrap flex-row text-base gap-4 text-center  md:flex md:gap-12 font-bold font-mono md:text-xl"
+        >
           <li><Link href="/Men">Men</Link></li>
           <li><Link href="/Women">Women</Link></li>
           <li><Link href="/Kids">Kids</Link></li>
@@ -71,7 +77,7 @@ function Navbar() {
         </ul>
 
         {/* Icons */}
-        <div className="space-x-10 flex items-center">
+        <div className="sm:space-x-10 flex sm:items-center">
           {/* User Menu */}
           <Button
             variant="text"
@@ -116,7 +122,7 @@ function Navbar() {
 
         {/* Cart Drawer */}
         <Drawer isOpen={isCartDrawerOpen} onClose={handleCartDrawerClose} />
-      </div>
+      </nav>
     </>
   );
 }

@@ -12,7 +12,7 @@ export async function GET() {
 
   } catch (error) {
     return NextResponse.json({
-      error: "Err ata getdata rouet => " + error.message,
+      error: "Err ata getdata route => " + error.message,
       success: false
     })
   }
