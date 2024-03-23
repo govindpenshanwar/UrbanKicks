@@ -10,7 +10,7 @@ function Logout() {
   const onLogout = async () => {
     try {
       const API = await axios.get('/api/Users/Logout');
-      router.push('/');
+      router.push('/Login');
     } catch (error) {
       console.error("Error at Logout Page => ", error.message);
     }

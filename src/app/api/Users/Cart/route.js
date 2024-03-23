@@ -9,7 +9,6 @@ export async function POST(req = NextRequest) {
     const reqBody = await req.json();
     const [id, name, picture, tag, price] = reqBody;
 
-
     const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
     const { username } = decodedToken;
 
