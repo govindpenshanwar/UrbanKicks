@@ -1,10 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { DbConnect } from "@/DBConfig/Config";
 import CartData from "@/models/cartModel";
+import jwt from "jsonwebtoken";
 
-export async function GET() {
+export async function GET(req = NextRequest) {
   try {
-    const cartItems = await CartData.find();
+    const authToken = req.cookies.get('token')?.value;
+    const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
+    const { username } = decodedToken;
+
+    const cartItems = await CartData.find({ username });
     return NextResponse.json({
       message: "Data Fetched",
       cartItems
@@ -12,7 +17,7 @@ export async function GET() {
 
   } catch (error) {
     return NextResponse.json({
-      error: "Err ata getdata route => " + error.message,
+      error: "Err at getData route => " + error.message,
       success: false
     })
   }

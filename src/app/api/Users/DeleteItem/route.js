@@ -6,8 +6,8 @@ import CartData from "@/models/cartModel";
 export async function DELETE(req = NextRequest) {
     try {
         const reqBody = await req.json();
-        const { id } = reqBody
-        console.log("Deleting id with server : ", id);
+        const { id } = reqBody;
+        console.log("Deleting id with from server : ", id);
 
         if (!id) {
             return NextResponse.json({

@@ -29,10 +29,10 @@ function Login() {
       if (user.username === "" || user.password === "") {
         toast.error("Please enter login credentials");
       } else {
-        const API = await axios.post("/api/Users/Login", user);
+        const API = await axios.post("/api/Users/Login", user, { withCredentials: true });
         const response = API.data;
         if (response.status === 400) {
-          toast.error(response.message); // Display the error message
+          toast.error(response.message);
         } else {
           toast.success("Logged In Successfully ");
           router.push("/");

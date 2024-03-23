@@ -1,25 +1,28 @@
-
-
 import { NextRequest, NextResponse } from "next/server";
 import { DbConnect } from "@/DBConfig/Config";
 import CartData from "@/models/cartModel";
-
+import jwt from "jsonwebtoken";
 
 export async function POST(req = NextRequest) {
   try {
     const reqBody = await req.json();
     const [id, name, picture, tag, price] = reqBody;
 
-    // Assuming reqBody is an array of items
+    const authToken = req.cookies.get('token')?.value;
+    const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
+    const { username } = decodedToken;
+
     const selectedItems = reqBody.map((item) => ({
       id: item.id,
+      username: username,
       name: item.name,
       picture: item.picture,
       tag: item.tag,
       price: item.price,
+
     }));
 
-    // Save each item individually
+    // Saving each item individually
     const savedItems = await Promise.all(
       selectedItems.map(async (item) => {
         const newItem = new CartData(item);
@@ -27,7 +30,7 @@ export async function POST(req = NextRequest) {
       })
     );
 
-    console.log(savedItems);
+    console.log("Saved items in cart => ", savedItems);
     return NextResponse.json({ success: true, savedItems });
   } catch (error) {
     console.error("Error at Cart Endpoint:", error);

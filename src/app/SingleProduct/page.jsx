@@ -27,8 +27,9 @@ const style = {
     p: 4,
 };
 
-function SinglePage({ searchParams }) {
+function SinglePage({ searchParams, username }) {
     const { id, name, picture, tag, price } = searchParams;
+
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [selectedItems, setSelectedItems] = useState([]);
@@ -39,15 +40,17 @@ function SinglePage({ searchParams }) {
 
     const handleBuyNow = useCallback((searchParams) => {
         console.log("Adding to cart => ", searchParams);
+        const items = { ...searchParams, username };
+        console.log("Adding to cart with username => ", items);
         // setSelectedItems((prevItems) => [...prevItems, searchParams]);
         setSelectedItems((prevItems) => {
-            const newItems = [...prevItems, searchParams];
+            const newItems = [...prevItems, items];
             console.log("Items to be Added 1 => ", newItems);
             return newItems;
         });
 
         setIsDrawerOpen(true);
-    }, [])
+    }, [username])
 
     const handleCloseDrawer = () => {
         setIsDrawerOpen(false);

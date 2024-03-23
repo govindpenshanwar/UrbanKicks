@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 
 function CheckoutPage() {
@@ -34,6 +35,10 @@ function CheckoutPage() {
         fetchData();
     }, []);
 
+    useEffect(() => {
+
+    })
+
     const removeItem = async (id) => {
         try {
             console.log("Deleting id with first :", id);
@@ -41,8 +46,10 @@ function CheckoutPage() {
                 data: { id },
             });
             if (response.data.success) {
-                setData((prevData) => prevData.filter(item => item.id !== id));
+                // setData((prevData) => prevData.filter(item => item.id !== id));
+                setData(prevData => prevData.filter(item => item.id !== id));
                 console.log("Item Deleted Successfully", response.data.message);
+                toast.success("Item Deleted Successfully !!")
 
             } else {
                 console.log("Unexpected response:", response.data);

@@ -17,10 +17,10 @@ const Drawer = ({ isOpen, onClose, }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const Api = await axios.get('/api/Users/GetData');
+      const Api = await axios.get('/api/Users/GetData', { withCredentials: true });
       const res = Api.data
       setData(res.cartItems);
-      console.log("Data got => ", res);
+      console.log("Data got from DB => ", res);
     }
     fetchData();
   }, []);
@@ -29,7 +29,6 @@ const Drawer = ({ isOpen, onClose, }) => {
 
   const removeItem = async (id) => {
     try {
-      console.log("Deleting id with first :", id);
       const response = await axios.delete("/api/Users/DeleteItem", {
         data: { id }
       });
