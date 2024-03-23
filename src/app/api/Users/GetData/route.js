@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 export async function GET(req = NextRequest) {
   try {
-    const authToken = req.cookies.get('token')?.value;
+    const authToken = await req.cookies.get('token')?.value;
     const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
     const { username } = decodedToken;
 

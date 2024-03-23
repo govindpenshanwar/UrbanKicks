@@ -6,7 +6,7 @@ const getUserInfo = (token) => {
 
 
 export async function getServerSideProps(context) {
-    const authToken = context.req.cookies.token;
+    const authToken = await context.req.cookies.token;
     const username = getUserInfo(authToken);
 
     return {
