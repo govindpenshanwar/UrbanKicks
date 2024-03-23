@@ -2,12 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { DbConnect } from "@/DBConfig/Config";
 import CartData from "@/models/cartModel";
 import jwt from "jsonwebtoken";
+// import { jwtDecode } from "jwt-decode";
+
+
 
 export async function GET(req = NextRequest) {
+  const authToken = await req.cookies.get('token')?.value;
   try {
-    const authToken = await req.cookies.get('token')?.value;
+    // const authToken = req.cookies.token;
+
+    // console.log("authtoken => ", authToken);
     const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
+    console.log("decoded => ", decodedToken);
     const { username } = decodedToken;
+
 
     const cartItems = await CartData.find({ username });
     return NextResponse.json({

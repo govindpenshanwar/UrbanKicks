@@ -4,11 +4,12 @@ import CartData from "@/models/cartModel";
 import jwt from "jsonwebtoken";
 
 export async function POST(req = NextRequest) {
+  const authToken = await req.cookies.get('token')?.value;
   try {
     const reqBody = await req.json();
     const [id, name, picture, tag, price] = reqBody;
 
-    const authToken = await req.cookies.get('token')?.value;
+
     const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
     const { username } = decodedToken;
 
