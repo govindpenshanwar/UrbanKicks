@@ -1,13 +1,13 @@
 import React from 'react'
-import Heading from '../Navbar/Heading'
-import CollectionList from '../Navbar/CollectionList'
-
+import dynamic from 'next/dynamic'
 
 function Main() {
+  const Heading = dynamic(() => import('../Navbar/Heading'));
+  const CollectionList = dynamic(() => import('../Navbar/CollectionList'));
   return (
     <div>
-      <Heading/>
-      <CollectionList/>
+      <Heading />
+      <CollectionList />
     </div>
   )
 }

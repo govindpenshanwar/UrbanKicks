@@ -8,8 +8,9 @@ export async function middleware(request = NextRequest) {
 
     const token = request.cookies.get('token')?.value || "";
     const nextAuthToken = request.cookies.get('next-auth.session-token')?.value || "";
+    const signInToken = request.cookies.get('__Secure-next-auth.session-token')?.value || "";
 
-    if ((isPublic || path === '/Drawer') && token && nextAuthToken) {
+    if ((isPublic || path === '/Drawer') && token && nextAuthToken && signInToken) {
         return NextResponse.redirect(new URL('/', request.nextUrl));
     };
 

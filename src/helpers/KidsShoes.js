@@ -9,91 +9,91 @@ const KidsShoes = [
     {
         id: 2,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/02791125-cd05-45df-aabf-c0313d191fac/dynamo-2-easyon-younger-shoes-tpCZq7.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Air Max 1',
         tag: 'Kids',
         price: '₹2299'
     },
     {
         id: 3,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5579b71f-50bb-4c2f-a28c-e2d974bbce18/jordan-1-low-alt-younger-shoes-W8Wbv0.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Jordan Max Aura 5',
         tag: 'Kids',
         price: '₹2799'
     },
     {
         id: 4,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/aa7a1c03-d4c7-4b5a-aaf6-69475fe94190/air-max-systm-shoes-x3Bgkf.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Jordan Stay Loyal 3',
         tag: 'Kids',
         price: '₹2399'
     },
     {
         id: 5,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e2537118-f70a-45df-a3ad-50485092407c/jordan-stay-loyal-3-older-shoes-dpkhvM.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Court Legacy',
         tag: 'Kids',
         price: '₹3299'
     },
     {
         id: 6,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5a480fa9-4f62-4308-aae8-af4dbd12c1ad/stay-loyal-3-younger-shoes-LKqTKQ.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Air Max 270',
         tag: 'Kids',
         price: '₹7999'
     },
     {
         id: 7,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e3923e9e-6432-4f5f-81b5-84d81cc29bdb/air-jordan-1-hi-flyease-older-shoes-LdMh25.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Air Jordan 1 Mid',
         tag: 'Kids',
         price: '₹3699'
     },
     {
         id: 8,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/03c385b6-3735-4ec8-bfac-966bc3e051f0/jr-phantom-luna-2-club-younger-older-mg-high-top-football-boot-qbC2KP.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Air Jordan 1 Mid SE',
         tag: 'Kids',
         price: '₹6999'
     },
     {
         id: 9,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/16646387-202c-4857-bb83-b44d6903819d/blazer-mid-77-se-older-shoes-rDgDHf.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Luka 2',
         tag: 'Kids',
         price: '₹4599'
     },
     {
         id: 10,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/eb91fda3-de59-455b-84d9-f8977d42444f/air-jordan-1-low-se-older-shoes-ZFFB6S.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Air Max SC',
         tag: 'Kids',
         price: '₹6499'
     },
     {
         id: 11,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/8aa6e1da-c06f-4dbe-a66d-a39bf39825cf/jordan-max-aura-5-older-shoes-KrcM3z.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Air Force LV18',
         tag: 'Kids',
         price: '₹2100'
     },
     {
         id: 12,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/8002edae-a1ae-477e-a39d-3d477c660b77/team-hustle-d-11-older-basketball-shoes-TBQxXL.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'JA 1se',
         tag: 'Kids',
         price: '₹1899'
     },
     {
         id: 13,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/04c4c7b0-5c35-4be8-9511-8a3e604bb2b9/jordan-1-mid-alt-shoes-9lgB2D.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Air Zoom Pegasus',
         tag: 'Kids',
         price: '₹999'
     },
     {
         id: 14,
         picture: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f50c9cea-50a9-4ca8-ad13-2e3735992525/revolution-7-older-running-shoes-RTdvsl.png',
-        name: 'Nike Jordan Point Lane',
+        name: 'Nike Air Jordan Mid SE',
         tag: 'Kids',
         price: '₹2299'
     },

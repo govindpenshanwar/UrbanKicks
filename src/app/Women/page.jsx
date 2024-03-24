@@ -1,11 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import Navbar from '../Components/Navbar/page'
-import SideNav from '../Components/SideNav/page'
 import Image from 'next/image'
 import WomenShoes from '@/helpers/WomenShoes'
 import Link from 'next/link'
 import Footer from '../Footer/page'
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import('../Components/Navbar/page'));
+const SideNav = dynamic(() => import('../Components/SideNav/page'));
 
 function WomensPage() {
   const [searchQuery, setSearchQuery] = useState("");

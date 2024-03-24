@@ -1,11 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Navbar from "../Components/Navbar/page";
+// import Navbar from "../Components/Navbar/page";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import('../Components/Navbar/page'));
 
 
 function CheckoutPage() {
