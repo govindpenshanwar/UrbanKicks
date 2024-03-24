@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from 'next-auth/providers/google';
 import nextAuthUsers from "@/models/nextAuthUsers";
 import { DbConnect } from "@/DBConfig/Config";
-import { NextResponse } from "next/server";
+
 
 
 export const authOptions = {

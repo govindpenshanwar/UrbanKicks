@@ -38,41 +38,60 @@ function SinglePage({ searchParams, username }) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleBuyNow = useCallback((searchParams) => {
-        console.log("Adding to cart => ", searchParams);
-        const items = { ...searchParams, username };
-        console.log("Adding to cart with username => ", items);
-        // setSelectedItems((prevItems) => [...prevItems, searchParams]);
-        setSelectedItems((prevItems) => {
-            const newItems = [...prevItems, items];
-            console.log("Items to be Added 1 => ", newItems);
-            return newItems;
-        });
+    // const handleBuyNow = useCallback((searchParams) => {
+    //     const items = { ...searchParams, username };
+    //     // setSelectedItems((prevItems) => [...prevItems, searchParams]);
+    //     setSelectedItems((prevItems) => {
+    //         const newItems = [...prevItems, items];
+    //         console.log("Items to be Added 1 => ", newItems);
+    //         return newItems;
+    //     });
 
-        setIsDrawerOpen(true);
-    }, [username])
+    //     setIsDrawerOpen(true);
+    // }, [username])
 
     const handleCloseDrawer = () => {
         setIsDrawerOpen(false);
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (selectedItems.length > 0) {
-                    console.log("Items to be Added => ", selectedItems);
-                    const API = await axios.post('/api/Users/Cart', selectedItems);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             if (selectedItems.length > 0) {
+    //                 console.log("Items to be Added => ", selectedItems);
+    //                 const API = await axios.post('/api/Users/Cart', selectedItems);
 
-                    const res = API.data;
-                    console.log("Data From singlProductPage : ", res);
-                    toast.success("Item Successfully added to cart")
-                }
-            } catch (error) {
-                console.error("err at useEffect : ", error);
+    //                 const res = API.data;
+    //                 console.log("Data From singlProductPage : ", res);
+    //                 toast.success("Item Successfully added to cart")
+    //             }
+    //         } catch (error) {
+    //             console.error("err at useEffect : ", error);
+    //         }
+    //     }
+    //     fetchData();
+    // }, [selectedItems])
+    const handleBuyNow = useCallback(async (searchParams) => {
+        console.log("Adding to cart => ", searchParams);
+        const items = { ...searchParams, username };
+        console.log("Adding to cart with username => ", items);
+
+        try {
+            const response = await axios.post('/api/Users/Cart', [items]); // Wrap items in an array
+            if (response.data.success) {
+                setSelectedItems((prevItems) => [...prevItems, items]);
+                setIsDrawerOpen(true);
+                toast.success("Item Successfully added to cart");
+            } else {
+                console.error("Failed to add item to cart:", response.data);
+                toast.error("Failed to add item to cart");
             }
+        } catch (error) {
+            console.error("Error adding item to cart:", error);
+            toast.error("Error adding item to cart");
         }
-        fetchData();
-    }, [selectedItems])
+    }, [username]);
+
 
     useEffect(() => {
         console.log("Selected Items in Drawer:", selectedItems);

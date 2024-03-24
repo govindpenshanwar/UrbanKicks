@@ -107,7 +107,7 @@ function Login() {
               width={30}
               height={30}
             />
-            Sign in with Google</button>
+            Continue with Google</button>
           {/* <button onClick={() => signOut()}>Sign Out</button> */}
         </div>
 

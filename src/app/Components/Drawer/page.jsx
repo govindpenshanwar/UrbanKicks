@@ -17,10 +17,15 @@ const Drawer = ({ isOpen, onClose, }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const Api = await axios.get('/api/Users/GetData', { withCredentials: true });
-      const res = Api.data
-      setData(res.cartItems);
-      console.log("Data got from DB => ", res);
+      try {
+        const Api = await axios.get('/api/Users/GetData', { withCredentials: true });
+        const res = Api.data
+        setData(res.cartItems);
+        console.log("Data got from DB => ", res);
+
+      } catch (error) {
+        console.error("Err getting data at drawer page => ", error.message);
+      }
     }
     fetchData();
   }, []);
