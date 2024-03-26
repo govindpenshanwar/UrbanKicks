@@ -34,54 +34,30 @@ function SinglePage({ searchParams, username }) {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [selectedItems, setSelectedItems] = useState([]);
     const [open, setOpen] = useState(false);
+    const [toogle, setToogle] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    // const handleBuyNow = useCallback((searchParams) => {
-    //     const items = { ...searchParams, username };
-    //     // setSelectedItems((prevItems) => [...prevItems, searchParams]);
-    //     setSelectedItems((prevItems) => {
-    //         const newItems = [...prevItems, items];
-    //         console.log("Items to be Added 1 => ", newItems);
-    //         return newItems;
-    //     });
 
-    //     setIsDrawerOpen(true);
-    // }, [username])
 
     const handleCloseDrawer = () => {
         setIsDrawerOpen(false);
     };
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             if (selectedItems.length > 0) {
-    //                 console.log("Items to be Added => ", selectedItems);
-    //                 const API = await axios.post('/api/Users/Cart', selectedItems);
 
-    //                 const res = API.data;
-    //                 console.log("Data From singlProductPage : ", res);
-    //                 toast.success("Item Successfully added to cart")
-    //             }
-    //         } catch (error) {
-    //             console.error("err at useEffect : ", error);
-    //         }
-    //     }
-    //     fetchData();
-    // }, [selectedItems])
     const handleBuyNow = useCallback(async (searchParams) => {
         console.log("Adding to cart => ", searchParams);
         const items = { ...searchParams, username };
         console.log("Adding to cart with username => ", items);
 
         try {
-            const response = await axios.post('/api/Users/Cart', [items]); // Wrap items in an array
+            const response = await axios.post('/api/Users/Cart', [items]);
             if (response.data.success) {
                 setSelectedItems((prevItems) => [...prevItems, items]);
-                setIsDrawerOpen(true);
+                setToogle(prevState => !prevState);
                 toast.success("Item Successfully added to cart");
+                setIsDrawerOpen(true);
             } else {
                 console.error("Failed to add item to cart:", response.data);
                 toast.error("Failed to add item to cart");
@@ -175,7 +151,7 @@ function SinglePage({ searchParams, username }) {
                 </div>
 
             </div>
-            <Drawer isOpen={isDrawerOpen} onClose={handleCloseDrawer} />
+            <Drawer isOpen={isDrawerOpen} onClose={handleCloseDrawer} setToogle={setToogle} />
             <Footer />
         </div>
     );

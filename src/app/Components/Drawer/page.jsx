@@ -1,52 +1,55 @@
-"use client"
-import axios from 'axios';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import toast from 'react-hot-toast';
-import { IoCloseOutline } from 'react-icons/io5';
+"use client";
+import axios from "axios";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { IoCloseOutline } from "react-icons/io5";
 
-
-
-const Drawer = ({ isOpen, onClose, }) => {
+const Drawer = ({ isOpen, onClose }) => {
   // console.log("Selected from Cart:", selectedItems);
   const [data, setData] = useState(null);
   const [itemQuantities, setItemQuantities] = useState({});
+  const [toogle, setToogle] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const Api = await axios.get('/api/Users/GetData', { withCredentials: true });
-        const res = Api.data
+        const Api = await axios.get("/api/Users/GetData", {
+          withCredentials: true,
+        });
+        const res = Api.data;
         setData(res.cartItems);
         console.log("Data got from DB => ", res);
-
       } catch (error) {
         console.error("Err getting data at drawer page => ", error.message);
       }
+    };
+    if (isOpen) {
+      fetchData();
     }
-    fetchData();
-  }, []);
 
+  }, [isOpen, toogle]);
 
 
   const removeItem = async (id) => {
     try {
       const response = await axios.delete("/api/Users/DeleteItem", {
-        data: { id }
+        data: { id },
       });
       if (response.data.success) {
         console.log("Item Deleted Successfully", response.data.message);
         toast.success("Item Deleted Successfully");
+        setToogle(prevState => !prevState);
       } else {
         console.log("Unexpected response:", response.data);
       }
     } catch (error) {
       console.error("Error at removeItem", error);
     }
-  }
+  };
   const handleIncrease = (id) => {
     setItemQuantities((prevQuantities) => ({
       ...prevQuantities,
@@ -65,22 +68,24 @@ const Drawer = ({ isOpen, onClose, }) => {
       return 0;
     }
 
-    return data.reduce((total, item) => {
-      const itemPrice = parseFloat(item.price.replace('₹', '').trim());
-      const quantity = itemQuantities[item.id] || 1;
-      return total + itemPrice * quantity;
-    }, 0).toFixed(2);
+    return data
+      .reduce((total, item) => {
+        const itemPrice = parseFloat(item.price.replace("₹", "").trim());
+        const quantity = itemQuantities[item.id] || 1;
+        return total + itemPrice * quantity;
+      }, 0)
+      .toFixed(2);
   };
 
   const handleCheckout = () => {
-    router.push('/checkout');
-  }
-
+    router.push("/checkout");
+  };
 
   return (
-
     <div
-      className={`fixed inset-0 z-50 overflow-hidden transition-opacity ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      className={`fixed inset-0 z-50 overflow-hidden transition-opacity ${isOpen
+        ? "opacity-100 pointer-events-auto"
+        : "opacity-0 pointer-events-none"
         }`}
     >
       <div className="absolute inset-0 overflow-hidden">
@@ -103,47 +108,52 @@ const Drawer = ({ isOpen, onClose, }) => {
                 </div>
               </div>
 
-              <div className='flex flex-col mt-10 space-y-8'>
-                {data && data.map((item) => (
-                  <ul
-                    className='flex justify-around'
-                    key={item.id}>
-                    <Image
-                      src={item.picture}
-                      alt='Shoe Image'
-                      width={120}
-                      height={120}
-                    />
-                    <div className='flex flex-col -ml-2'>
-                      <li className='text-base font-semibold'>{item.name}</li>
-                      <li>{item.tag}</li>
+              <div className="flex flex-col mt-10 space-y-8">
+                {data &&
+                  data.map((item) => (
+                    <ul className="flex justify-around" key={item.id}>
+                      <Image
+                        src={item.picture}
+                        alt="Shoe Image"
+                        width={120}
+                        height={120}
+                      />
+                      <div className="flex flex-col -ml-2">
+                        <li className="text-base font-semibold">{item.name}</li>
+                        <li>{item.tag}</li>
 
-                      <div className='flex flex-row gap-4 mt-3'>
-                        <button
-                          onClick={() => handleDecrease(item.id)}
-                        >-</button>
+                        <div className="flex flex-row gap-4 mt-3">
+                          <button onClick={() => handleDecrease(item.id)}>
+                            -
+                          </button>
 
-                        <button>{itemQuantities[item.id] || 1}</button>
+                          <button>{itemQuantities[item.id] || 1}</button>
 
-                        <button
-                          onClick={() => handleIncrease(item.id)}
-                        >+</button>
+                          <button onClick={() => handleIncrease(item.id)}>
+                            +
+                          </button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className='flex flex-col space-y-4'>
-                      <li className='text-base font-semibold'>{item.price}</li>
-                      <button
-                        className='btn w-max mb-6 h-12 text-center'
-                        onClick={() => {
-                          console.log("Deleting item with id Second:", item._id)
-                          removeItem(item._id)
-                        }}
-                      >Remove</button>
-                    </div>
-                  </ul>
-                ))
-                }
+                      <div className="flex flex-col space-y-4">
+                        <li className="text-base font-semibold">
+                          {item.price}
+                        </li>
+                        <button
+                          className="btn w-max mb-6 h-12 text-center"
+                          onClick={() => {
+                            console.log(
+                              "Deleting item with id Second:",
+                              item._id
+                            );
+                            removeItem(item._id);
+                          }}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </ul>
+                  ))}
               </div>
 
               <div className="flex-1"></div>
@@ -170,7 +180,8 @@ const Drawer = ({ isOpen, onClose, }) => {
                 </div>
                 <button
                   onClick={handleCheckout}
-                  className="btn block font-bold text-lg w-full text-center mt-4">
+                  className="btn block font-bold text-lg w-full text-center mt-4"
+                >
                   Checkout
                 </button>
               </div>
@@ -182,5 +193,5 @@ const Drawer = ({ isOpen, onClose, }) => {
   );
 };
 
-
 export default Drawer;
+

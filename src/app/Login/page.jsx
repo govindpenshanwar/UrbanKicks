@@ -73,6 +73,7 @@ function Login() {
           onChange={(e) => setUser({ ...user, password: e.target.value })}
           variant="outlined"
           label="Password"
+          type="password"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

@@ -33,7 +33,11 @@ export async function POST(req = NextRequest) {
     console.log("Saved items in cart => ", savedItems);
     return NextResponse.json({ success: true, savedItems });
   } catch (error) {
-    console.error("Error at Cart Endpoint:", error);
+    return NextResponse.json({
+      success: false,
+      error: error.message
+    });
+    // console.error("Error at Cart Endpoint:", error);
   }
 }
 

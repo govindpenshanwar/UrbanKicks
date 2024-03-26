@@ -15,6 +15,7 @@ function CheckoutPage() {
     const router = useRouter();
     const [data, setData] = useState(null);
     const [itemQuantities, setItemQuantities] = useState({});
+    const [toogle, setToogle] = useState(false);
 
     const [formInfo, setFormInfo] = useState({
         name: '',
@@ -36,7 +37,7 @@ function CheckoutPage() {
             console.log("Data at checkoutPage :", res);
         };
         fetchData();
-    }, []);
+    }, [toogle]);
 
     useEffect(() => {
 
@@ -53,6 +54,7 @@ function CheckoutPage() {
                 setData(prevData => prevData.filter(item => item.id !== id));
                 console.log("Item Deleted Successfully", response.data.message);
                 toast.success("Item Deleted Successfully !!")
+                setToogle(prevState => !prevState);
 
             } else {
                 console.log("Unexpected response:", response.data);
