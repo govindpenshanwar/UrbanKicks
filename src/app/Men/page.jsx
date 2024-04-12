@@ -65,6 +65,7 @@ function MensPage() {
                 },
               }}
             >
+
               <div className="h-max w-max opacity-100 grid  gap-16 object-cover">
                 <div className="shadow-md ">
                   <Image

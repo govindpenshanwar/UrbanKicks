@@ -127,7 +127,9 @@ function CheckoutPage() {
 
     return (
         < >
-            <Navbar />
+            <div className='w-full sm:ml-0 ml-36'>
+                <Navbar />
+            </div>
 
             <div className=" flex justify-between  ">
                 <div className="w-full sm:w-auto flex flex-col sm:ml-36 mt-9  px-6 gap-6 mb-4 ">
