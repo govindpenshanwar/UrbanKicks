@@ -38,7 +38,7 @@ function SideNav({ onSearch, onSortByChange }) {
     };
 
     return (
-        <div className="w-auto px-5 sm:px-0 sm:w-44 space-x-2 sm:space-x-0  sm:mx-24  mt-16  ">
+        <div className="w-auto px-5 sm:px-0 sm:w-44 space-x-2 sm:space-x-0  sm:mx-24">
             <h3 className="mb-3 text-2xl  font-semibold">Search</h3>
             <input
                 type="text"

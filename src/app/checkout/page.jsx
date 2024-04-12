@@ -39,9 +39,9 @@ function CheckoutPage() {
         fetchData();
     }, [toogle]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    })
+    // })
 
     const removeItem = async (id) => {
         try {
@@ -98,6 +98,31 @@ function CheckoutPage() {
         console.log(`Total: ₹${total}`);
 
         return total;
+    };
+
+    const handlePayment = () => {
+        // Check if any address field is empty
+        for (const key in formInfo) {
+            if (formInfo[key] === '') {
+                toast.error("Please fill in all address fields");
+                return; // Stop execution if any field is empty
+            }
+        }
+
+        // Redirect to payment page if all fields are filled
+        // router.push({
+        //     pathname: '/Payment',
+        //     query: { total: calculateTotalPrice() }
+        // });
+    };
+
+    const isAddressFilled = () => {
+        for (const key in formInfo) {
+            if (formInfo[key] === '') {
+                return false; // Return false if any field is empty
+            }
+        }
+        return true; // Return true if all fields are filled
     };
 
     return (
@@ -192,18 +217,18 @@ function CheckoutPage() {
                     <div className="flex flex-col mt-10 space-y-8">
                         {data &&
                             data.map((item) => (
-                                <ul className="flex flex-col lg:flex-row justify-around" key={item.id}>
+                                <ul className="flex flex-col sm:flex-col items-center md:flex-col lg:flex-row justify-around mb-2" key={item.id}>
                                     <Image
                                         src={item.picture}
                                         alt="Shoe Image"
                                         width={120}
                                         height={120}
                                     />
-                                    <div className="flex flex-col -ml-2">
+                                    <div className="flex flex-col text-center">
                                         <li className="text-base font-semibold">{item.name}</li>
                                         <li>{item.tag}</li>
 
-                                        <div className="flex flex-row gap-4 mt-3">
+                                        <div className="flex flex-row gap-4 mt-3 items-center justify-center ">
                                             <button onClick={() => handleDecrease(item.id)}>-</button>
 
                                             <button>{itemQuantities[item.id] || 1}</button>
@@ -213,7 +238,7 @@ function CheckoutPage() {
                                     </div>
 
                                     <div className="flex flex-col space-y-4">
-                                        <li className="text-base font-semibold">{item.price}</li>
+                                        <li className="text-base font-semibold text-center">{item.price}</li>
                                         <button
                                             className="btn w-max mb-6 h-12 text-center"
                                             onClick={() => {
@@ -230,7 +255,7 @@ function CheckoutPage() {
                     <div className="flex-1"></div>
 
                     <div className="px-2 py-2 sm:px-6 ">
-                        <div className="mb-2 flex flex-wrap w-full flex-col items-start  justify-between sm:mb-0 sm:flex-row sm:items-center">
+                        <div className="mb-2 flex flex-wrap w-full flex-col items-center  justify-around sm:mb-0 sm:flex-row sm:items-center">
                             <h3 className="text-xl font-semibold ml-4">
                                 Total:₹{calculateTotalPrice()}
                                 {/* {Array.isArray(selectedItems) ? calculateTotal(selectedItems) : 0} */}
@@ -263,16 +288,24 @@ function CheckoutPage() {
                         />
                         <button className="bg-zinc-950 w-16 px-1 py-2 mt-1 text-white h-10 text-center hover:scale-105">Check</button>
                     </div>
-                    <Link href={{
-                        pathname: '/Payment',
-                        query: { total: calculateTotalPrice() }
-                    }}>
-                        <button
-                            // className="btn ml-32 block font-bold text-lg w-4/6 justify-center items-center text-center mt-4 "
-                            className="btn ml-auto mr-auto block font-bold text-lg md:w-4/6 w-full justify-center items-center text-center mt-4"
-                        >Pay
-                        </button>
-                    </Link>
+                    {
+                        isAddressFilled() &&
+                        <Link href={{
+                            pathname: '/Payment',
+                            query: { total: calculateTotalPrice() }
+                        }}>
+                            <button
+                                // className="btn ml-32 block font-bold text-lg w-4/6 justify-center items-center text-center mt-4 "
+                                className="btn ml-auto mr-auto block font-bold text-lg md:w-4/6 w-full justify-center items-center text-center mt-4"
+
+                                onClick={handlePayment}
+                            >Pay Now
+                            </button>
+                        </Link>
+                    }
+                    {!isAddressFilled() && (
+                        <p className="text-red-500 text-center mt-4">Please fill in all address fields to proceed with payment</p>
+                    )}
                 </div>
             </div>
         </>

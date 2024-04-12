@@ -26,9 +26,9 @@ function CollectionList() {
     return (
         <>
             <div
-                className='md:py-28 py-10 px-10 flex items-center justify-center flex-col md:px-20 md:ml-20 '
+                className='md:py-28 py-10 px-20 flex items-center justify-center flex-col md:px-20 ml-0 md:ml-20 '
             >
-                <div className='flex w-full mb-10 md:h-md sm:mb-3 flex-col ml-24 md:ml-32 md:px-16 lg:px-0 '>
+                <div className='flex w-full mb-10 md:h-md sm:mb-3 flex-col ml-10 md:ml-32 md:px-16 lg:px-0 '>
                     <div className='flex md:flex-row flex-col   md:h-96 md:gap-6'>
                         <Image
                             src={men}
@@ -49,8 +49,10 @@ function CollectionList() {
                 </div>
 
 
-                <div className='md:flex-row-reverse mb-10  flex-col md:mt-8  ml-28 md:ml-60 md:pl-24 md:mb-12 flex md:h-96 gap-4 md:gap-8'>
-                    <div className='flex md:flex-row flex-col md:h-96 md:gap-6'>
+                <div
+                    className='flex w-full sm:w-max  flex-col md:flex-row-reverse mb-10   md:mt-8  ml-10  md:ml-60 md:pl-24 md:mb-12 md:h-96 gap-4 md:gap-8'
+                >
+                    <div className='flex md:flex-row flex-col h-full md:h-96 md:gap-6'>
                         <Image
                             src={women}
                             alt='women'
@@ -72,7 +74,7 @@ function CollectionList() {
                 </div>
 
                 <div
-                    className='flex w-full flex-col md:h-96 ml-24 md:mb-3 mb-10 md:ml-32 md:px-16 lg:px-0 '
+                    className='flex w-full flex-col md:h-96 ml-10  md:mb-3 mb-10 md:ml-32 md:px-16 lg:px-0 '
                 // className='flex w-full flex-col ml-32 md:px-16 lg:px-0'
                 >
                     <div
@@ -101,7 +103,7 @@ function CollectionList() {
                     </div>
                 </div>
 
-                <div className='md:flex-row-reverse  flex-col md:mt-8  ml-28 md:ml-72 md:pl-24 md:mb-12 flex md:h-96 gap-4 md:gap-8'>
+                <div className='md:flex-row-reverse w-full sm:w-max  flex-col md:mt-8  ml-10  md:ml-72 md:pl-24 md:mb-12 flex md:h-96 gap-4 md:gap-8'>
                     <div className='flex md:flex-row flex-col md:h-96 md:gap-6'>
                         <Image
                             src={unisex}

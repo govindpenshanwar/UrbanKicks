@@ -108,10 +108,10 @@ const Drawer = ({ isOpen, onClose }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col mt-10 space-y-8">
+              <div className="flex flex-col sm:text-base text-sm mt-10 space-y-8">
                 {data &&
                   data.map((item) => (
-                    <ul className="flex justify-around" key={item.id}>
+                    <ul className="flex sm:gap-0 gap-6 sm:px-0 px-2 justify-around" key={item.id}>
                       <Image
                         src={item.picture}
                         alt="Shoe Image"
@@ -119,7 +119,7 @@ const Drawer = ({ isOpen, onClose }) => {
                         height={120}
                       />
                       <div className="flex flex-col -ml-2">
-                        <li className="text-base font-semibold">{item.name}</li>
+                        <li className="sm:text-base text-sm sm:text-nowrap text-wrap  font-semibold">{item.name}</li>
                         <li>{item.tag}</li>
 
                         <div className="flex flex-row gap-4 mt-3">
@@ -159,8 +159,8 @@ const Drawer = ({ isOpen, onClose }) => {
               <div className="flex-1"></div>
 
               <div className="px-4 py-2 sm:px-6">
-                <div className="mb-2 flex w-full flex-col items-start justify-between sm:mb-0 sm:flex-row sm:items-center">
-                  <h3 className="text-xl font-semibold">
+                <div className="mb-2 flex w-full flex-row text-sm sm:text-lg items-start justify-between sm:mb-0 sm:flex-row sm:items-center">
+                  <h3 className="sm:text-lg text-sm font-semibold">
                     Total:₹{calculateTotalPrice()}
                     {/* {Array.isArray(selectedItems) ? calculateTotal(selectedItems) : 0} */}
                   </h3>

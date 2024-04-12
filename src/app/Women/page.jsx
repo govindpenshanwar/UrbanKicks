@@ -42,8 +42,11 @@ function WomensPage() {
     setSortingCriteria(value);
   };
   return (
-    <div>
-      <Navbar />
+    <div className="flex flex-col gap-10 sm:mt-0 mt-5">
+
+      <div className='w-full sm:ml-0 ml-36'>
+        <Navbar />
+      </div>
       <div className='sm:flex flex sm:gap-0  gap-5'>
         <SideNav onSearch={handleSearch} onSortByChange={handleSortByChange} />
         <div className='relative grid  md:grid-cols-2 lg:grid-cols-3 pr-4 md:pr-0 lg:pr-0  justify-center gap-14 '>
