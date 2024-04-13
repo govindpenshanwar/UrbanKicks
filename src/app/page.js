@@ -1,8 +1,4 @@
 "use client"
-// import Navbar from './Components/Navbar/page'
-// import Banner from './Components/Banner/page'
-// import { CartProvider } from './CartContext/Context'
-// import Footer from './Footer/page'
 import dynamic from 'next/dynamic'
 
 
